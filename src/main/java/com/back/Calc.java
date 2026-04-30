@@ -8,8 +8,12 @@ public class Calc {
         if(exp.contains("+")) {
             String[] expBits = exp.trim().split(" \\+ ");
             int result = 0;
-            for(String i : expBits)
-                result += Integer.parseInt(i);
+            for(String i : expBits) {
+                if(i.contains(" - "))
+                    result += run(i);
+                else
+                    result += Integer.parseInt(i);
+            }
             return result;
         } else if(exp.contains("-")) {
             String[] expBits = exp.trim().split(" - ");
