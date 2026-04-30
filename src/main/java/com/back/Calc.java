@@ -33,7 +33,10 @@ public class Calc {
         String[] expBits = exp.trim().split(" - ");
         int result = 0;
         for (int i = 0; i < expBits.length; i++)
-            result += Integer.parseInt(expBits[i]) * (i == 0 ? 1 : -1);
+            if(expBits[i].contains(" * "))
+                result += run(expBits[i]) * (i == 0 ? 1 : -1);
+            else
+                result += Integer.parseInt(expBits[i]) * (i == 0 ? 1 : -1);
         return result;
     }
 
